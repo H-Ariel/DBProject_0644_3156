@@ -9,6 +9,7 @@
 ![image](https://github.com/user-attachments/assets/5a86de33-3d97-40b5-b0f8-999eb83ffdb3)
 תרשים DSD:
 ![image](https://github.com/user-attachments/assets/1c06c281-45df-4566-9dc6-ce1f51dc746f)
+
 צילומי המסך של שלושת השיטות להכנסת הנתונים:
 ![generatedata](https://github.com/user-attachments/assets/bf98f4bf-fe5d-47dc-8db0-45776067b7ab)
 
