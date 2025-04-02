@@ -17,6 +17,7 @@
 
 צילום מסך גיבוי הנתונים:
 ![backup](https://github.com/user-attachments/assets/f35b84fc-30e0-47f5-a0c6-b001a4fcc011)
+
 צילום מסך של שחזור הנתונים ממחשב אחר:
 ![backupmy jpg](https://github.com/user-attachments/assets/01d5ea52-34ff-4356-82ff-7b375e91166f)
 
