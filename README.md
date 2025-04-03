@@ -20,23 +20,23 @@
 
 ---
 ## תרשים ERD
-![image](./ERDAndDSTFiles/ERD.png)
+![image](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%90/ERDAndDSTFiles/ERD.png?raw=true)
 
 ---
 ## תרשים DSD
-![image](./ERDAndDSTFiles/DSD.png)
+![image](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%90/ERDAndDSTFiles/DSD.png?raw=true)
 
 ---
 ## שיטות להכנסת הנתונים
 
 ### יצירת נתונים באופן אוטומטי
-![generatedata](./screenshots/generatedata.jpg)
+![generatedata](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%90/screenshots/generatedata.jpg?raw=true)
 
 ### ייבוא נתונים מקובץ CSV
-![import-from-csv](./import-from-csv.jpg)
+![import-from-csv](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%90/screenshots/import-from-csv.jpg?raw=true)
 
 ### הכנסת נתונים באמצעות סקריפט פייתון
-![python-script](./python-scripts/script.py)
+📜 **[python script](./python-scripts/script.py)**  
 
 ---
 ## צילום מסך גיבוי הנתונים
