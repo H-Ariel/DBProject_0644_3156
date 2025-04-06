@@ -39,8 +39,8 @@
 📜 **[python script](./שלב%20א/programing/init-script.py)**  
 
 ### הכנסת נתונים באמצעות סקריפט SQL
-📜 **[sql script](./שלב%20א/sql-scripts/insertTables.sql)**  
-
+[https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%90/DataImportFiles/insert_Crew.sql
+](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%90/DataImportFiles/insert_Crew.sql)
 ---
 ## צילום מסך גיבוי הנתונים
 ![backup](https://github.com/user-attachments/assets/f35b84fc-30e0-47f5-a0c6-b001a4fcc011)
