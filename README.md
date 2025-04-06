@@ -38,6 +38,9 @@
 ### הכנסת נתונים באמצעות סקריפט פייתון
 📜 **[python script](./python-scripts/script.py)**  
 
+### הכנסת נתונים באמצעות סקריפט SQL
+📜 **[sql script](./sql-scripts/insertTables.sql)**  
+
 ---
 ## צילום מסך גיבוי הנתונים
 ![backup](https://github.com/user-attachments/assets/f35b84fc-30e0-47f5-a0c6-b001a4fcc011)
