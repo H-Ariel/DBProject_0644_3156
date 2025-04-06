@@ -36,7 +36,7 @@
 ![import-from-csv](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%90/screenshots/import-from-csv.jpg?raw=true)
 
 ### הכנסת נתונים באמצעות סקריפט פייתון
-📜 **[python script](./python-scripts/script.py)**  
+📜 **[python script](./programing/init-script.py)**  
 
 ### הכנסת נתונים באמצעות סקריפט SQL
 📜 **[sql script](./sql-scripts/insertTables.sql)**  
