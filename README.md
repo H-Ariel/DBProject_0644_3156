@@ -47,5 +47,5 @@
 
 ---
 ## צילום מסך של שחזור הנתונים ממחשב אחר
-![backupmy jpg](https://github.com/user-attachments/assets/01d5ea52-34ff-4356-82ff-7b375e91166f)
+![restore](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%90/screenshots/restore.jpg?raw=true)
 
