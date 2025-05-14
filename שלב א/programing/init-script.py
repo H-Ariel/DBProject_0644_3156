@@ -9,7 +9,7 @@ fake = Faker()
 # init connection
 print('connect...')
 conn = psycopg2.connect(
-    host='host.docker.internal', #"172.17.0.2",
+    host='localhost',#'host.docker.internal', #"172.17.0.2",
     port="5432",
     database="postgres",
     user="myuser",
