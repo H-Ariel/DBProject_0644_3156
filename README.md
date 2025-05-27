@@ -28,6 +28,8 @@
 	3.2 [שאילתות UPDATE](#שאילתות-update)
   
 	3.3 [שאילתות DELETE](#שאילתות-delete)
+
+   	3.4 [אילוצים](#אילוצים)
  
 
 
@@ -281,3 +283,28 @@ DELETE FROM INFRASTRUCTURE I WHERE I.STATUS = 2;
 ```
 ![before delete 3](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%91/screenshots/before-delete-3.jpg?raw=true) - *before delete 3*
 ![after delete 3](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%91/screenshots/after-delete-3.jpg?raw=true) - *after delete 3*
+
+---
+
+## אילוצים
+
+### 1. הוספת אילוץ CHECK לטבלת crew לוודא שתפקיד לא ריק
+
+```sql
+ALTER TABLE crew ADD CONSTRAINT chk_role_not_empty CHECK (role <> '');
+```
+![constraint-`](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%91/screenshots/constraint-1.jpg?raw=true) - *constraint 1*
+
+### 2. הוספת DEFAULT לתאריך רכישה של ציוד
+
+```sql
+ALTER TABLE equipment ALTER COLUMN purchase_date SET DEFAULT CURRENT_DATE;
+```
+![constraint-`](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%91/screenshots/constraint-2.jpg?raw=true) - *constraint 2*
+
+### 3. הוספת NOT NULL ל-capacity בתשתיות
+
+```sql
+ALTER TABLE infrastructure ALTER COLUMN capacity SET NOT NULL;
+```
+![constraint-`](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%91/screenshots/constraint-3.jpg?raw=true) - *constraint 3*
