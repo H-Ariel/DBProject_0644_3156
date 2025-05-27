@@ -30,6 +30,10 @@
 	3.3 [שאילתות DELETE](#שאילתות-delete)
 
    	3.4 [אילוצים](#אילוצים)
+
+	3.5 [COMMIT](#COMMIT)
+
+   	3.6 [ROLLBACK](#ROLLBACK)
  
 
 
@@ -293,18 +297,39 @@ DELETE FROM INFRASTRUCTURE I WHERE I.STATUS = 2;
 ```sql
 ALTER TABLE crew ADD CONSTRAINT chk_role_not_empty CHECK (role <> '');
 ```
-![constraint-`](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%91/screenshots/constraint-1.jpg?raw=true) - *constraint 1*
+![constraint-1](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%91/screenshots/constraint-1.jpg?raw=true) - *constraint 1*
 
 ### 2. הוספת DEFAULT לתאריך רכישה של ציוד
 
 ```sql
 ALTER TABLE equipment ALTER COLUMN purchase_date SET DEFAULT CURRENT_DATE;
 ```
-![constraint-`](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%91/screenshots/constraint-2.jpg?raw=true) - *constraint 2*
+![constraint-2](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%91/screenshots/constraint-2.jpg?raw=true) - *constraint 2*
 
 ### 3. הוספת NOT NULL ל-capacity בתשתיות
 
 ```sql
 ALTER TABLE infrastructure ALTER COLUMN capacity SET NOT NULL;
 ```
-![constraint-`](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%91/screenshots/constraint-3.jpg?raw=true) - *constraint 3*
+![constraint-3](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%91/screenshots/constraint-3.jpg?raw=true) - *constraint 3*
+
+---
+
+## COMMIT
+
+```sql
+BEGIN;
+UPDATE Crew SET role = 'Banana' WHERE crew_id = 1;
+COMMIT;
+```
+![commit](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%91/screenshots/commit.jpg?raw=true) - *after commit*
+
+## ROLLBACK
+
+```sql
+BEGIN;
+UPDATE Crew SET role = 'Banana' WHERE crew_id = 1;
+ROLLBACK;
+```
+![rollback](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%91/screenshots/rollback.jpg?raw=true) - *after rollback*
+
