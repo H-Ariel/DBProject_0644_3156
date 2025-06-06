@@ -34,7 +34,9 @@
 	3.5 [COMMIT](#COMMIT)
 
    	3.6 [ROLLBACK](#ROLLBACK)
- 
+
+4. [שלב 3 - אינטגרציה](#שלב-3---אינטגרציה)
+
 
 
 ---
@@ -332,4 +334,91 @@ UPDATE Crew SET role = 'Banana' WHERE crew_id = 1;
 ROLLBACK;
 ```
 ![rollback](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%91/screenshots/rollback.jpg?raw=true) - *after rollback*
+
+
+---
+
+# שלב 3 - אינטגרציה
+
+את האינטגרציה ביצענו עם מאור וארי. בשלב הזה ביצענו אינטגרציה עם מערכת לניהול מסעדה. החלטנו לשלב את המערכות שלנו ע"י יצירת טבלה חדשה People בה כל חוקר הוא גם מלצר בשעות הערב במושבה בה הוא עובד. מכיוון שהחוקרים רוצים להפריד ביןחיי המחקר לחיי המלצרות שלהם הם נכנסו למערכת עם שם שונה בין כל עבודה ועם ת"ז שונה, אבל אנחנו מכירים אותם ורוצים לעזור להם לנהל את הזמן טוב יותר ולכן יש לנו טבלה בה שמור הת"ז של כל אחד בכל עבודה. התרשימים הבאים מציגים את המערכת שקיבלנו ואת המערכת המשולבת:
+
+## תרשימים
+
+### תרשים ה-ERD שקיבלנו
+![theirERD](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%92/ERDAndDSTFiles/theirERD.jpg?raw=true)
+
+### תרשים ה-DSD שקיבלנו
+![theirDSD](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%92/ERDAndDSTFiles/theirDSD.jpg?raw=true)
+
+### תרשים ה-ERD המשולב
+![integratedERD](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%92/ERDAndDSTFiles/integratedERD.jpg?raw=true)
+
+### תרשים ה-DSD המשולב
+![integratedDSD](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%92/ERDAndDSTFiles/integratedDSD.jpg?raw=true)
+
+
+## מבטים
+
+### 1. מציג פרטי הזמנה במסעדה כולל שם הלקוח, סטטוס ההזמנה, מלצר, ושיטת תשלום
+
+``` sql
+CREATE OR REPLACE VIEW View_Restaurant_Orders AS
+SELECT
+    r."RestOrder_ID",
+    r."RestOrder_DateTime",
+    c."Full_Name" AS customer_name,
+    w."Full_Name" AS waiter_name,
+    r."Total_price",
+    r."StatusO	" AS order_status,
+    p."Payment_Method",
+    p."Payment_Status"
+FROM "RestOrder" r
+JOIN "Customer" c ON r."Customer_ID" = c."Customer_ID"
+LEFT JOIN "Waiter" w ON r."Waiter_ID" = w."Waiter_ID"
+JOIN "Payment" p ON r."Payment_ID" = p."Payment_ID";
+```
+
+#### שאילתא 1 - כל ההזמנות ששולמו באשראי
+
+```sql
+SELECT * FROM View_Restaurant_Orders WHERE "Payment_Method" = 'CreditCard' LIMIT 10;
+```
+![query1.1](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%92/screenshots/query1.1.jpg?raw=true)
+
+#### שאילתא 2 - הזמנות מעל 100 ש"ח
+
+```sql
+SELECT * FROM View_Restaurant_Orders WHERE "Total_price" > 100 LIMIT 10;
+```
+![query1.2](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%92/screenshots/query1.2.jpg?raw=true)
+
+
+### 2. מציג חוקרים לפי מושבות, כולל תחום מחקר, צוות ושם מושבה.
+```sql
+CREATE OR REPLACE VIEW View_Colony_Researchers AS
+SELECT
+    r.researcher_id,
+    r.name AS researcher_name,
+    r.research_field,
+    c.name AS crew_name,
+    col.name AS colony_name,
+    col.established_date
+FROM researcher r
+JOIN crew c ON r.crew_id = c.crew_id
+JOIN colony col ON c.colony_id = col.colony_id;
+```
+
+#### שאילתא 1 - צוותים במושבות שהוקמו אחרי 2020
+
+```sql
+SELECT crew_name FROM View_Colony_Researchers WHERE established_date > '2020-01-01' LIMIT 10;
+```
+![query2.1](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%92/screenshots/query2.1.jpg?raw=true)
+
+#### שאילתא 2 - חוקרים במושבות שמתחילות ב-Ca
+
+```sql
+SELECT researcher_name FROM View_Colony_Researchers WHERE colony_name LIKE 'Ca%' LIMIT 10;
+```
+![query2.2](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%92/screenshots/query2.2.jpg?raw=true)
 
