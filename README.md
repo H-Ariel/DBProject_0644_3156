@@ -351,10 +351,10 @@ ROLLBACK;
 ![theirDSD](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%92/ERDAndDSTFiles/theirDSD.jpg?raw=true)
 
 ### תרשים ה-ERD המשולב
-![integratedERD](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%92/ERDAndDSTFiles/integratedERD.jpg?raw=true)
+![integratedERD](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%92/ERDAndDSTFiles/integratedERD.png?raw=true)
 
 ### תרשים ה-DSD המשולב
-![integratedDSD](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%92/ERDAndDSTFiles/integratedDSD.jpg?raw=true)
+![integratedDSD](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%92/ERDAndDSTFiles/integratedDSD.png?raw=true)
 
 
 ## מבטים
