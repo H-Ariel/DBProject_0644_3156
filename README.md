@@ -39,6 +39,8 @@
 
 5. [שלב 4 - פונקציות](#שלב-4---פונקציות)
 
+6. [שלב 5 - ממשק גרפי](#שלב-5---ממשק-גרפי)
+
 
 
 ---
@@ -557,4 +559,61 @@ $$;
 ```
 
 ![run-main-2](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%93/screenshots/run-main2.jpg?raw=true)
+
+---
+# שלב 5 - ממשק גרפי
+
+בשלב זה פיתחנו ממשק גרפי בעזרת Python ו־PyQt5. הממשק מאפשר גישה נוחה ופשוטה לפעולות על בסיס הנתונים – כולל הצגת טבלאות, הרצת שאילתות, והפעלת פונקציות ופרוצדורות.
+
+## התקנה
+
+להתקנת התלויות יש להריץ:
+
+```cmd
+pip install pyqt5 psycopg2
+```
+
+יש לוודא שמסד הנתונים PostgreSQL רץ, ושקובץ ההגדרות config.json כולל פרטי חיבור תקינים.
+
+## הרצה
+
+להפעלת האפליקציה:
+
+```cmd
+python MainApp.py
+```
+
+האפליקציה תפתח בחלון גרפי המציג את התפריט הראשי עם כפתורים לגישה לטבלאות, הפעלת שאילתות, ותפעול פרוצדורות.
+העיצוב נקי, עם צבעים נעימים (כחול/תכלת), חלוקה נוחה ללשוניות, וטפסים קלים לשימוש.
+
+## צילומי מסך
+
+### מסך ראשי
+
+![main-screen](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%94/screenshots/main-screen.jpg?raw=true)
+
+### הכנסת שורה חדשה
+
+![insert-screen](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%94/screenshots/insert-screen.jpg?raw=true)
+
+### עדכון שורה
+
+![update-screen](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%94/screenshots/update-screen.jpg?raw=true)
+
+### מחיקת שורה
+
+![delete-screen](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%94/screenshots/delete-screen.jpg?raw=true)
+
+### הרצת פונקציות ופרוצדורות
+
+![run-func-proc](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%94/screenshots/run-func-proc-window.jpg?raw=true)
+
+### הרצת שאילתות
+
+![run-queries-window](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%94/screenshots/run-queries-window.jpg?raw=true)
+
+---
+
+תודה שהגעתם עד כאן :)
+
 
