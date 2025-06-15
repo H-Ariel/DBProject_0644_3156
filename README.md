@@ -594,15 +594,15 @@ python MainApp.py
 
 ### הכנסת שורה חדשה
 
-![insert-screen](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%94/screenshots/insert-screen.jpg?raw=true)
+![insert-screen](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%94/screenshots/insert-window.jpg?raw=true)
 
 ### עדכון שורה
 
-![update-screen](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%94/screenshots/update-screen.jpg?raw=true)
+![update-screen](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%94/screenshots/update-window.jpg?raw=true)
 
 ### מחיקת שורה
 
-![delete-screen](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%94/screenshots/delete-screen.jpg?raw=true)
+![delete-screen](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%94/screenshots/delete-window.jpg?raw=true)
 
 ### הרצת פונקציות ופרוצדורות
 
