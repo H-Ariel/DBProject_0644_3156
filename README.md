@@ -37,6 +37,8 @@
 
 4. [שלב 3 - אינטגרציה](#שלב-3---אינטגרציה)
 
+5. [שלב 4 - פונקציות](#שלב-4---פונקציות)
+
 
 
 ---
@@ -421,4 +423,138 @@ SELECT crew_name FROM View_Colony_Researchers WHERE established_date > '2020-01-
 SELECT researcher_name FROM View_Colony_Researchers WHERE colony_name LIKE 'Ca%' LIMIT 10;
 ```
 ![query2.2](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%92/screenshots/query2.2.jpg?raw=true)
+
+---
+
+# שלב 4 - פונקציות
+
+## פונקציה 1 - מחשבת ממוצע מחירים של מנות
+```sql
+CREATE FUNCTION avg_dish_price() RETURNS REAL AS $$
+DECLARE
+    avg_price REAL;
+BEGIN
+    SELECT AVG(price) INTO avg_price FROM "Dish";
+    RETURN avg_price;
+END;
+$$ LANGUAGE plpgsql;
+```
+
+## פונקציה 2 - מחזירה REF CURSOR של כל ההזמנות בסטטוס מסוים
+```sql
+CREATE FUNCTION get_orders_by_status(status_input order_status) RETURNS refcursor AS $$
+DECLARE
+    cur refcursor := 'get_orders_by_status';
+BEGIN
+    OPEN cur FOR SELECT * FROM "RestOrder" WHERE "StatusO	" = status_input;
+    RETURN cur;
+END;
+$$ LANGUAGE plpgsql;
+```
+
+## פרוצדורה 1 - עדכון סטטוס הזמנה
+```sql
+CREATE PROCEDURE update_order_status(order_id INT, new_status order_status) AS $$
+BEGIN
+    UPDATE "RestOrder" SET "StatusO	" = new_status WHERE "RestOrder_ID" = order_id;
+END;
+$$ LANGUAGE plpgsql;
+```
+
+## פרוצדורה 2 - פרוצדורה עם CURSOR, לולאה ו-EXCEPTION
+```sql
+CREATE PROCEDURE update_all_orders_to_completed() AS $$
+DECLARE
+    r RECORD;
+    cur CURSOR FOR SELECT "RestOrder_ID" FROM "RestOrder" WHERE "StatusO	" != 'Completed';
+BEGIN
+    OPEN cur;
+    LOOP
+        FETCH cur INTO r;
+        EXIT WHEN NOT FOUND;
+        BEGIN
+            UPDATE "RestOrder" SET "StatusO	" = 'Completed' WHERE "RestOrder_ID" = r."RestOrder_ID";
+        EXCEPTION WHEN OTHERS THEN
+            RAISE NOTICE 'שגיאה בהזמנה %', r."RestOrder_ID";
+        END;
+    END LOOP;
+    CLOSE cur;
+END;
+$$ LANGUAGE plpgsql;
+```
+
+## טריגר 1 - טריגר לעדכון תאריך ברכישה חדשה
+```sql
+CREATE OR REPLACE FUNCTION set_payment_date() RETURNS trigger AS $$
+BEGIN
+    NEW."Payment_Date" := CURRENT_DATE;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_set_payment_date
+BEFORE INSERT ON "Payment"
+FOR EACH ROW EXECUTE FUNCTION set_payment_date();
+```
+
+## טריגר 2 - טריגר לווידוא מחיר מנה חיובי
+```sql
+CREATE OR REPLACE FUNCTION check_dish_price() RETURNS trigger AS $$
+BEGIN
+    IF NEW.price <= 0 THEN
+        RAISE EXCEPTION 'מחיר לא תקין!';
+    END IF;
+    RETURN NEW;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE TRIGGER trg_check_dish_price
+BEFORE INSERT OR UPDATE ON "Dish"
+FOR EACH ROW EXECUTE FUNCTION check_dish_price();
+```
+
+## תוכנית 1 - מזמנת פונקציה ופרוצדורה - מחשבת ממוצע מחירים ומעדכנת סטטוס להזמנה
+
+### מה התוכנית עושה?
+
+התוכנית מחשבת את המחיר הממוצע של מנות (dishes) על ידי קריאה לפונקציה, ולאחר מכן מעדכנת את הסטטוס של הזמנה ספציפית (עם מזהה 1) ל'Confirmed' (אושר).
+
+```sql
+DO $$
+DECLARE
+    avg_price REAL;
+BEGIN
+    avg_price := avg_dish_price();
+    CALL update_order_status(1, 'Confirmed');
+END;
+$$;
+```
+
+![run-main-1](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%93/screenshots/run-main1.jpg?raw=true)
+
+## תוכנית 2 - מזמנת פונקציה עם REF CURSOR ופרוצדורה - מדפיסה מזהי הזמנות בסטטוס "Pending" ומעדכנת את כולן ל־Completed.
+
+### מה התוכנית עושה?
+
+התוכנית שולפת את כל ההזמנות מתוך טבלת "RestOrder" שנמצאות במצב 'Pending' (ממתין), מדפיסה את מזהה כל הזמנה שנמצאה, ולאחר מכן מעדכנת את כל ההזמנות בטבלה למצב 'Completed' (הושלם).
+
+```sql
+DO $$
+DECLARE
+    cur refcursor;
+    row "RestOrder"%ROWTYPE;
+BEGIN
+    cur := get_orders_by_status('Pending');
+    LOOP
+        FETCH cur INTO row;
+        EXIT WHEN NOT FOUND;
+        RAISE NOTICE 'הזמנה: %', row."RestOrder_ID";
+    END LOOP;
+    CALL update_all_orders_to_completed();
+END;
+$$;
+
+```
+
+![run-main-2](https://github.com/H-Ariel/DBProject_0644_3156/blob/main/%D7%A9%D7%9C%D7%91%20%D7%93/screenshots/run-main2.jpg?raw=true)
 
